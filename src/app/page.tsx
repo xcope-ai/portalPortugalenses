@@ -1,100 +1,218 @@
+'use client';
+
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import LanguageSelector from "./components/LanguageSelector";
+
+// Translations object
+const translations = {
+  en: {
+    welcome: "Welcome to your portal! Please log in",
+    email: "Email",
+    password: "Password",
+    login: "Login",
+    createAccount: "Create Account",
+    forgotPassword: "Forgot your Password or Email?",
+    followUs: "Follow us on digital platforms:",
+    developedBy: "Developed by",
+    copyright: "Copyright © Portugalenses All rights reserved"
+  },
+  pt: {
+    welcome: "Bem-vindo ao seu portal! Por favor, faça login",
+    email: "Email",
+    password: "Palavra-passe",
+    login: "Entrar",
+    createAccount: "Criar Conta",
+    forgotPassword: "Esqueceu a sua Palavra-passe ou Email?",
+    followUs: "Siga-nos nas plataformas digitais:",
+    developedBy: "Desenvolvido por",
+    copyright: "Copyright © Portugalenses Todos os direitos reservados"
+  }
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [currentLanguage, setCurrentLanguage] = useState('en');
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const t = translations[currentLanguage as keyof typeof translations];
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleLanguageChange = (lang: string) => {
+    setCurrentLanguage(lang);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (email && password) {
+      // Store email in localStorage
+      localStorage.setItem('userEmail', email);
+      // Here you would typically make an API call to validate credentials
+      // For now, we'll just redirect if both fields are filled
+      router.push('/initial');
+    }
+  };
+
+  return (
+    <div className="login-container">
+      {/* Header with language selector */}
+      <header className="header">
+        <LanguageSelector 
+          currentLanguage={currentLanguage}
+          onLanguageChange={handleLanguageChange}
+        />
+      </header>
+
+      {/* Main content */}
+      <main className="main-content">
+        {/* Logo */}
+        <div className="logo">
+          <Image
+            src="/icon.png"
+            alt="Portal Portugalenses Logo"
+            width={100}
+            height={100}
+            priority
+          />
         </div>
+
+        {/* Portal title */}
+        <h1 className="portal-title">PORTAL PORTUGALENSES</h1>
+        
+        {/* Welcome text */}
+        <p className="welcome-text">{t.welcome}</p>
+
+        {/* Login form */}
+        <form className="login-form" onSubmit={handleSubmit}>
+          {/* Email field */}
+          <div className="form-group">
+            <label htmlFor="email">{t.email}</label>
+            <div className="input-container">
+              <input
+                id="email"
+                type="email"
+                className="input-field"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+
+          {/* Password field */}
+          <div className="form-group">
+            <label htmlFor="password">{t.password}</label>
+            <div className="input-container">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                className="input-field password-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={togglePasswordVisibility}
+                aria-label="toggle password visibility"
+              >
+                {showPassword ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* reCAPTCHA */}
+          <div className="recaptcha-container">
+            <div className="g-recaptcha">
+              {/* This is just a placeholder for the reCAPTCHA UI */}
+              <div style={{ border: '1px solid #d3d3d3', borderRadius: '3px', width: '300px', height: '74px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: '#555' }}>
+                reCAPTCHA placeholder
+              </div>
+            </div>
+          </div>
+
+          {/* Buttons */}
+          <div className="button-container">
+            <button type="submit" className="login-button">
+              {t.login}
+            </button>
+            <button type="button" className="create-account-button">
+              {t.createAccount}
+            </button>
+          </div>
+
+          {/* Forgot password link */}
+          <div className="forgot-password">
+            <a href="#">{t.forgotPassword}</a>
+          </div>
+        </form>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-left">
+            <div className="address-info">
+              <p>R. Bela Vista 638, 4415-170 Pedroso, Portugal</p>
+              <p>Tel: +351 227 452 096 (Call to national landline)</p>
+            </div>
+          </div>
+          
+          <div className="footer-center">
+            <p className="text-center mb-4">{t.followUs}</p>
+            <div className="social-links">
+              <a href="#" className="social-link">
+                <Image
+                  src="/logo_facebook.png"
+                  alt="Facebook"
+                  width={28}
+                  height={28}
+                />
+              </a>
+              <a href="#" className="social-link">
+                <Image
+                  src="/logo_instagram.png"
+                  alt="Instagram"
+                  width={28}
+                  height={28}
+                />
+              </a>
+              <a href="#" className="social-link">
+                <Image
+                  src="/logo_linkedin.png"
+                  alt="LinkedIn"
+                  width={28}
+                  height={28}
+                />
+              </a>
+            </div>
+          </div>
+          
+          <div className="footer-right">
+            <div className="copyright">
+              <p>{t.copyright}</p>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
