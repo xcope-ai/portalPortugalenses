@@ -87,6 +87,7 @@ const enTranslations = {
     customerSupport: 'Customer Support',
     certifications: 'Certifications',
     settings: 'Settings',
+    assistant: 'Assistant',
   },
   clients: {
     phcClients: 'PHC Clients',
@@ -320,6 +321,7 @@ const ptTranslations = {
     customerSupport: 'Apoio ao Cliente',
     certifications: 'Certificações',
     settings: 'Configurações',
+    assistant: 'Assistente',
   },
   clients: {
     phcClients: 'Clientes PHC',
@@ -553,6 +555,7 @@ const itTranslations = {
     customerSupport: 'Assistenza Clienti',
     certifications: 'Certificazioni',
     settings: 'Impostazioni',
+    assistant: 'Assistente',
   },
   clients: {
     phcClients: 'Clienti PHC',

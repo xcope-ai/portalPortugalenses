@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { useI18n } from '@/lib/i18n';
 import { useAuth } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
 import styles from './LoginForm.module.css';
 
-const LoginForm = () => {
+const LoginForm = memo(() => {
   const { t } = useI18n();
   const { login } = useAuth();
   const router = useRouter();
@@ -17,23 +17,23 @@ const LoginForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData(prev => ({
+      ...prev,
       [id]: value,
-    });
+    }));
     
     // Clear error when user starts typing
     if (errors[id]) {
-      setErrors({
-        ...errors,
+      setErrors(prev => ({
+        ...prev,
         [id]: '',
-      });
+      }));
     }
-  };
+  }, [errors]);
   
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const newErrors: Record<string, string> = {};
     
     if (!formData.email) {
@@ -48,9 +48,9 @@ const LoginForm = () => {
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
+  }, [formData, t]);
   
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateForm()) {
@@ -76,7 +76,7 @@ const LoginForm = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [formData, login, t, validateForm]);
   
   return (
     <div className={styles.loginContainer}>
@@ -144,6 +144,8 @@ const LoginForm = () => {
       </div>
     </div>
   );
-};
+});
+
+LoginForm.displayName = 'LoginForm';
 
 export default LoginForm;

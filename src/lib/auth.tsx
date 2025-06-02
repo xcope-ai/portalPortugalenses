@@ -46,6 +46,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setTimeout(() => {
         setIsAuthenticated(true);
         localStorage.setItem('isAuthenticated', 'true');
+        // Set the cookie for middleware
+        document.cookie = 'isAuthenticated=true; path=/';
         // Redirect to last visited page if it exists, otherwise default to /clients
         const storedLastPage = localStorage.getItem('lastVisitedPage');
         if (storedLastPage && storedLastPage !== '/') {
@@ -61,6 +63,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem('isAuthenticated');
+    // Remove the cookie
+    document.cookie = 'isAuthenticated=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
     router.push('/');
   };
   
