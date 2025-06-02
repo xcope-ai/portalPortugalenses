@@ -12,7 +12,6 @@ const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    captcha: '',
   });
   
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -47,10 +46,6 @@ const LoginForm = () => {
       newErrors.password = t('forms.passwordRequired');
     }
     
-    if (!formData.captcha) {
-      newErrors.captcha = t('forms.captchaRequired');
-    }
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -63,21 +58,19 @@ const LoginForm = () => {
     }
     
     setIsLoading(true);
+    setErrors({}); // Clear any previous errors
     
     try {
       const success = await login(formData.email, formData.password);
       
-      if (success) {
-        router.push('/');
-      } else {
+      if (!success) {
         setErrors({
-          ...errors,
           general: t('forms.invalidCredentials'),
         });
       }
     } catch (error) {
+      console.error('Login error:', error);
       setErrors({
-        ...errors,
         general: t('forms.loginError'),
       });
     } finally {
@@ -91,10 +84,12 @@ const LoginForm = () => {
         <h2 className={styles.loginTitle}>{t('forms.portalTitle')}</h2>
         
         {errors.general && (
-          <div className={styles.errorMessage}>{errors.general}</div>
+          <div className={styles.errorMessage} role="alert">
+            {errors.general}
+          </div>
         )}
         
-        <form onSubmit={handleSubmit} className={styles.loginForm}>
+        <form onSubmit={handleSubmit} className={styles.loginForm} noValidate>
           <div className={styles.formGroup}>
             <label htmlFor="email">{t('auth.email')}</label>
             <input
@@ -103,9 +98,14 @@ const LoginForm = () => {
               value={formData.email}
               onChange={handleChange}
               className={errors.email ? styles.inputError : ''}
+              autoComplete="email"
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? 'email-error' : undefined}
             />
             {errors.email && (
-              <div className={styles.errorText}>{errors.email}</div>
+              <div className={styles.errorText} id="email-error" role="alert">
+                {errors.email}
+              </div>
             )}
           </div>
           
@@ -117,29 +117,14 @@ const LoginForm = () => {
               value={formData.password}
               onChange={handleChange}
               className={errors.password ? styles.inputError : ''}
+              autoComplete="current-password"
+              aria-invalid={!!errors.password}
+              aria-describedby={errors.password ? 'password-error' : undefined}
             />
             {errors.password && (
-              <div className={styles.errorText}>{errors.password}</div>
-            )}
-          </div>
-          
-          <div className={styles.formGroup}>
-            <label htmlFor="captcha">{t('auth.captcha')}</label>
-            <div className={styles.captchaContainer}>
-              <div className={styles.captchaImage}>
-                {/* This would be a real CAPTCHA image in production */}
-                CAPTCHA
+              <div className={styles.errorText} id="password-error" role="alert">
+                {errors.password}
               </div>
-              <input
-                type="text"
-                id="captcha"
-                value={formData.captcha}
-                onChange={handleChange}
-                className={errors.captcha ? styles.inputError : ''}
-              />
-            </div>
-            {errors.captcha && (
-              <div className={styles.errorText}>{errors.captcha}</div>
             )}
           </div>
           
@@ -147,6 +132,7 @@ const LoginForm = () => {
             type="submit"
             className={styles.loginButton}
             disabled={isLoading}
+            aria-busy={isLoading}
           >
             {isLoading ? t('common.loading') : t('auth.loginButton')}
           </button>

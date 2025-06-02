@@ -64,14 +64,10 @@ const Header = () => {
           )}
         </div>
         
-        {isAuthenticated ? (
+        {isAuthenticated && (
           <button className={styles.authButton} onClick={logout}>
             {t('common.logout')}
           </button>
-        ) : (
-          <Link href="/login" className={styles.authButton}>
-            {t('common.login')}
-          </Link>
         )}
       </div>
     </header>

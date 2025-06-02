@@ -43,7 +43,8 @@ export default function SearchBar() {
     { path: '/customer-support/view-complaints', title: t('customerSupport.viewComplaints'), category: t('navigation.customerSupport') },
     
     // Certifications section
-    { path: '/certifications', title: t('certifications.addNewFile'), category: t('navigation.certifications') },
+    { path: '/certifications/add-file', title: t('certifications.uploadCertifications'), category: t('navigation.certifications') },
+    { path: '/certifications/view-files', title: t('certifications.viewCertifications'), category: t('navigation.certifications') },
   ];
 
   useEffect(() => {

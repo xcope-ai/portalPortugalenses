@@ -26,14 +26,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     if (storedAuth === 'true') {
       setIsAuthenticated(true);
     }
-    if (storedLastPage) {
+    if (storedLastPage && storedLastPage !== '/') {
       setLastVisitedPage(storedLastPage);
     }
   }, []);
 
   // Update last visited page when pathname changes
   useEffect(() => {
-    if (isAuthenticated && pathname && pathname !== '/login') {
+    if (isAuthenticated && pathname && pathname !== '/') {
       setLastVisitedPage(pathname);
       localStorage.setItem('lastVisitedPage', pathname);
     }
@@ -46,12 +46,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setTimeout(() => {
         setIsAuthenticated(true);
         localStorage.setItem('isAuthenticated', 'true');
-        // Redirect to last visited page if it exists
+        // Redirect to last visited page if it exists, otherwise default to /clients
         const storedLastPage = localStorage.getItem('lastVisitedPage');
-        if (storedLastPage) {
+        if (storedLastPage && storedLastPage !== '/') {
           router.push(storedLastPage);
         } else {
-          router.push('/');
+          router.push('/clients');
         }
         resolve(true);
       }, 1000);
@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem('isAuthenticated');
-    router.push('/login');
+    router.push('/');
   };
   
   return (
