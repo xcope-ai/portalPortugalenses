@@ -1,0 +1,42 @@
+.footer {
+  height: var(--footer-height);
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 14px;
+  position: relative;
+  z-index: 950;
+}
+
+.companyInfo, .contactInfo, .socialLinks {
+  display: flex;
+  align-items: center;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 15px;
+}
+
+.socialIcon {
+  font-size: 18px;
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.socialIcon:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    gap: 10px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,77 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.view-button, .download-button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.view-button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.view-button:hover {
+  background-color: rgba(13, 23, 79, 0.9);
+}
+
+.download-button {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.download-button:hover {
+  background-color: rgba(74, 85, 104, 0.9);
+}
+
+.status-active {
+  color: #38a169;
+  font-weight: 500;
+}
+
+.status-inactive {
+  color: #e53e3e;
+  font-weight: 500;
+}
+
+.placeholder-message {
+  background-color: rgba(13, 23, 79, 0.05);
+  border: 1px dashed var(--border-color);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.account-summary {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.summary-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .summary-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

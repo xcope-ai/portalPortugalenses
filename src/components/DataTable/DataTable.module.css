@@ -1,0 +1,88 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.tableControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pageSize {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pageSize select {
+  padding: 5px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dataTable th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+
+.dataTable tr:hover {
+  background-color: rgba(13, 23, 79, 0.05);
+}
+
+.noData {
+  text-align: center;
+  padding: 30px;
+  color: var(--light-text-color);
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.pagination button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: rgba(13, 23, 79, 0.9);
+}
+
+.pagination button:disabled {
+  background-color: var(--light-text-color);
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  font-size: 14px;
+  color: var(--secondary-color);
+}

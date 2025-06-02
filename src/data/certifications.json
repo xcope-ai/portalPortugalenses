@@ -1,0 +1,16 @@
+{
+  "certifications": [
+    { "id": "CERT001", "name": "ADR", "type": "vehicle", "vehicleId": "VH001", "issueDate": "2023-01-10", "expiryDate": "2025-01-10", "status": "valid" },
+    { "id": "CERT002", "name": "TCC", "type": "driver", "driverId": "DRV002", "issueDate": "2023-02-15", "expiryDate": "2025-02-15", "status": "valid" },
+    { "id": "CERT003", "name": "ISO 9001", "type": "client", "clientId": "CLI003", "issueDate": "2022-03-20", "expiryDate": "2025-03-20", "status": "valid" },
+    { "id": "CERT004", "name": "ADR", "type": "vehicle", "vehicleId": "VH004", "issueDate": "2023-04-25", "expiryDate": "2025-04-25", "status": "expired" },
+    { "id": "CERT005", "name": "TCC", "type": "driver", "driverId": "DRV005", "issueDate": "2023-05-30", "expiryDate": "2025-05-30", "status": "valid" },
+    { "id": "CERT006", "name": "ISO 14001", "type": "client", "clientId": "CLI006", "issueDate": "2022-06-05", "expiryDate": "2025-06-05", "status": "valid" },
+    { "id": "CERT007", "name": "ADR", "type": "vehicle", "vehicleId": "VH007", "issueDate": "2023-07-10", "expiryDate": "2025-07-10", "status": "valid" },
+    { "id": "CERT008", "name": "TCC", "type": "driver", "driverId": "DRV008", "issueDate": "2023-08-15", "expiryDate": "2025-08-15", "status": "expired" },
+    { "id": "CERT009", "name": "ISO 9001", "type": "client", "clientId": "CLI009", "issueDate": "2022-09-20", "expiryDate": "2025-09-20", "status": "valid" },
+    { "id": "CERT010", "name": "ADR", "type": "vehicle", "vehicleId": "VH010", "issueDate": "2023-10-25", "expiryDate": "2025-10-25", "status": "valid" },
+    { "id": "CERT011", "name": "TCC", "type": "driver", "driverId": "DRV011", "issueDate": "2023-11-30", "expiryDate": "2025-11-30", "status": "valid" },
+    { "id": "CERT012", "name": "ISO 14001", "type": "client", "clientId": "CLI012", "issueDate": "2022-12-05", "expiryDate": "2025-12-05", "status": "valid" }
+  ]
+} 
