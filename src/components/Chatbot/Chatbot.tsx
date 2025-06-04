@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import styles from './Chatbot.module.css';
 import { DataRetriever } from './utils/dataRetriever';
 import {
@@ -73,6 +74,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const dataRetriever = useRef(new DataRetriever());
     const welcomeShown = useRef(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         if (isOpen && !welcomeShown.current) {
@@ -92,6 +94,8 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
     const showWelcomeMessage = () => {
         const welcomeMessage = getRandomResponse(welcomeMessages);
         addMessage(welcomeMessage, 'bot');
+        // Pre-fill the input box with the predefined message
+        setInputValue("Quero os documentos de março do Cliente CLI003");
     };
 
     const addMessage = (text: string, sender: 'user' | 'bot', html: boolean = false) => {
@@ -217,7 +221,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
                                 <div className={styles.messageContent}>{message.text}</div>
                             )}
                             <div className={styles.messageTimestamp}>
-                                {message.timestamp.toLocaleTimeString()}
+                                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                             </div>
                         </div>
                     ))}
@@ -251,6 +255,11 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
                 </form>
             </div>
         );
+    }
+
+    // Don't render the chatbot bubble on login page or dedicated chatbot page
+    if (pathname === '/' || pathname === '/chatbot') {
+        return null;
     }
 
     return (
@@ -295,7 +304,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
                                     <div className={styles.messageContent}>{message.text}</div>
                                 )}
                                 <div className={styles.messageTimestamp}>
-                                    {message.timestamp.toLocaleTimeString()}
+                                    {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                 </div>
                             </div>
                         ))}
