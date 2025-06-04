@@ -21,9 +21,9 @@ const Header = () => {
 
   const getLanguageLabel = (code: string) => {
     switch (code) {
-      case 'en': return 'English';
-      case 'pt': return 'Português';
-      case 'it': return 'Italiano';
+      case 'en': return '🇬🇧  English';
+      case 'pt': return '🇵🇹  Português';
+      case 'it': return '🇮🇹  Italiano';
       default: return code;
     }
   };

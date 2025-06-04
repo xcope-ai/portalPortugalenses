@@ -3,7 +3,7 @@ import { useAuth } from '@/lib/auth';
 import Link from 'next/link';
 import styles from './Sidebar.module.css';
 import { usePathname } from 'next/navigation';
-import { FaUsers, FaFileAlt, FaTruck, FaBox, FaHeadset, FaAward, FaCog } from 'react-icons/fa';
+import { FaUsers, FaFileAlt, FaTruck, FaBox, FaHeadset, FaAward, FaCog, FaComments } from 'react-icons/fa';
 
 const Sidebar = () => {
   const { t } = useI18n();
@@ -21,6 +21,7 @@ const Sidebar = () => {
     { id: 'logistics', label: t('navigation.logistics'), path: '/logistics', icon: <FaBox /> },
     { id: 'customerSupport', label: t('navigation.customerSupport'), path: '/customer-support', icon: <FaHeadset /> },
     { id: 'certifications', label: t('navigation.certifications'), path: '/certifications', icon: <FaAward /> },
+    { id: 'chatbot', label: t('navigation.assistant'), path: '/chatbot', icon: <FaComments /> },
     { id: 'settings', label: t('navigation.settings'), path: '/settings', icon: <FaCog /> },
   ];
 
