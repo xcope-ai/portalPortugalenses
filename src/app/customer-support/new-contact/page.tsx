@@ -48,7 +48,7 @@ export default function NewContactRequestPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('customerSupport.newContactRequest')}>
+      <PageContainer title={t('customerSupport.newContactRequest')} showBackButton>
         <FormContainer title={t('forms.requestContact')} onSubmit={handleSubmit}>
           <FormField
             label={t('common.name')}

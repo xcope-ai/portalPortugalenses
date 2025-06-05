@@ -68,7 +68,7 @@ export default function ViewComplaintsPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('customerSupport.viewComplaints')}>
+      <PageContainer title={t('customerSupport.viewComplaints')} showBackButton>
         <DataTable
           columns={columns}
           data={complaints}

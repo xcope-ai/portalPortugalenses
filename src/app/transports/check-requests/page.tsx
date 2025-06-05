@@ -81,7 +81,7 @@ export default function CheckRequestsPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('transports.checkRequests')}>
+      <PageContainer title={t('transports.checkRequests')} showBackButton>
         <DataTable
           columns={columns}
           data={requests}

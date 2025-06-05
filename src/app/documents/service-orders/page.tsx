@@ -22,7 +22,7 @@ export default function ServiceOrdersPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('documents.viewServiceOrders')}>
+      <PageContainer title={t('documents.viewServiceOrders')} showBackButton>
         <DataTable
           columns={columns}
           data={serviceOrders}

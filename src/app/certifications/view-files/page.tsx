@@ -52,7 +52,7 @@ export default function ViewFilesPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('certifications.viewFiles')}>
+      <PageContainer title={t('certifications.viewFiles')} showBackButton>
         <DataTable
           columns={columns}
           data={certifications}

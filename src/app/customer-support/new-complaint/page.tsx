@@ -46,7 +46,7 @@ export default function NewComplaintPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('customerSupport.newComplaint')}>
+      <PageContainer title={t('customerSupport.newComplaint')} showBackButton>
         <FormContainer title={t('forms.submitComplaint')} onSubmit={handleSubmit}>
           <FormField
             label={t('forms.complaintType')}

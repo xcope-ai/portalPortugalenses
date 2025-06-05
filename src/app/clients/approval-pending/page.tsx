@@ -79,7 +79,7 @@ export default function ApprovalPendingPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('clients.approvalPendingRequests')}>
+      <PageContainer title={t('clients.approvalPendingRequests')} showBackButton>
         <DataTable
           columns={columns}
           data={pendingRequests}

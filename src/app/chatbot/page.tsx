@@ -11,7 +11,7 @@ export default function ChatbotPage() {
         <DefaultLayout>
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <h1>Assistente de Documentos</h1>
+                    <h1>Quinas</h1>
                     <p>Encontre rapidamente faturas, guias de transporte e outros documentos</p>
                 </div>
                 <div className={styles.chatContainer}>

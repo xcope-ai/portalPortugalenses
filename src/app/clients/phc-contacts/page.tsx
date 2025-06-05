@@ -32,7 +32,7 @@ export default function PhcContactsPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('clients.phcContacts')}>
+      <PageContainer title={t('clients.phcContacts')} showBackButton>
         <DataTable
           columns={columns}
           data={contacts}

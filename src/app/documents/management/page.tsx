@@ -23,7 +23,7 @@ export default function DocumentManagementPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('documents.documentManagement')}>
+      <PageContainer title={t('documents.documentManagement')} showBackButton>
         <DataTable
           columns={columns}
           data={documents}

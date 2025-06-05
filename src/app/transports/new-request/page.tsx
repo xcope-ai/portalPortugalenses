@@ -54,7 +54,7 @@ export default function NewRequestPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('transports.newRequest')}>
+      <PageContainer title={t('transports.newRequest')} showBackButton>
         <FormContainer title={t('transports.submitRequest')} onSubmit={handleSubmit}>
           <FormField
             label={t('forms.requestType')}

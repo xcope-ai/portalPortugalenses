@@ -15,9 +15,9 @@ export default function PhcClientsPage() {
   const columns = [
     { key: 'id', header: t('common.id') },
     { key: 'name', header: t('common.companyName') },
-    { key: 'contact', header: t('common.contactPerson') },
+    { key: 'contactPerson', header: t('common.contactPerson') },
     { key: 'email', header: t('common.email') },
-    { key: 'contact', header: t('common.phone') },
+    { key: 'phone', header: t('common.phone') },
     { 
       key: 'status', 
       header: t('common.status'),
@@ -31,7 +31,7 @@ export default function PhcClientsPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('clients.phcClients')}>
+      <PageContainer title={t('clients.phcClients')} showBackButton>
         <DataTable
           columns={columns}
           data={clients}

@@ -42,7 +42,7 @@ export default function AddFilePage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('certifications.addNewFile')}>
+      <PageContainer title={t('certifications.addNewFile')} showBackButton>
         <FormContainer title={t('forms.uploadCertification')} onSubmit={handleSubmit}>
           <FormField
             label={t('forms.certificationType')}

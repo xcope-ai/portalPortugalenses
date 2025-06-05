@@ -64,7 +64,7 @@ export default function ViewContactRequestsPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('customerSupport.viewContactRequests')}>
+      <PageContainer title={t('customerSupport.viewContactRequests')} showBackButton>
         <DataTable
           columns={columns}
           data={contactRequests}

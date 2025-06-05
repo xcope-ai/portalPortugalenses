@@ -32,7 +32,7 @@ export default function CheckingAccountPage() {
   
   return (
     <DefaultLayout>
-      <PageContainer title={t('documents.checkingAccount')}>
+      <PageContainer title={t('documents.checkingAccount')} showBackButton>
         <div className="account-summary">
           <h3>Account Summary</h3>
           <div className="summary-details">

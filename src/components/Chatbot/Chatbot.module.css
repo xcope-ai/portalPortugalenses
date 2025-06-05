@@ -1,6 +1,6 @@
 .chatbotContainer {
   position: fixed;
-  bottom: 60px;
+  bottom: var(--chatbot-bottom-offset, 20px);
   right: 20px;
   z-index: 1000;
 }
@@ -35,7 +35,7 @@
 
 .chatWindow {
   position: fixed;
-  bottom: 20px;
+  bottom: var(--chatbot-bottom-offset, 20px);
   right: 20px;
   width: 350px;
   height: 500px;
@@ -47,6 +47,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin-bottom: 0;
 }
 
 .chatHeader {
@@ -56,11 +57,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .chatHeader h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .closeButton {
@@ -71,6 +80,7 @@
   cursor: pointer;
   padding: 0;
   line-height: 1;
+  z-index: 2;
 }
 
 .messagesContainer {

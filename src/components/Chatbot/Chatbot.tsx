@@ -75,6 +75,8 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
     const dataRetriever = useRef(new DataRetriever());
     const welcomeShown = useRef(false);
     const pathname = usePathname();
+    const [bottomOffset, setBottomOffset] = useState(10); // px
+    const footerRef = useRef<HTMLElement | null>(null);
 
     useEffect(() => {
         if (isOpen && !welcomeShown.current) {
@@ -86,6 +88,42 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
+
+    useEffect(() => {
+        // Only run in browser
+        if (typeof window === 'undefined') return;
+        // Try to find the footer
+        const footer = document.querySelector('footer');
+        if (!footer) return;
+        footerRef.current = footer as HTMLElement;
+
+        // Always set the initial offset based on footer height
+        setBottomOffset(footer.getBoundingClientRect().height + 10);
+
+        const observer = new window.IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    // Footer is visible, move chatbot up
+                    setBottomOffset(entry.boundingClientRect.height + 10);
+                } else {
+                    // Footer not visible, stick to bottom
+                    setBottomOffset(10);
+                }
+            },
+            {
+                root: null,
+                threshold: 0.01,
+            }
+        );
+        observer.observe(footer);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        // Set the CSS variable for the bottom offset
+        const root = document.documentElement;
+        root.style.setProperty('--chatbot-bottom-offset', `${bottomOffset}px`);
+    }, [bottomOffset]);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -100,7 +138,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
 
     const addMessage = (text: string, sender: 'user' | 'bot', html: boolean = false) => {
         const newMessage: Message = {
-            id: Date.now().toString(),
+            id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
             text,
             sender,
             timestamp: new Date(),
@@ -212,6 +250,9 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
                                 message.sender === 'user' ? styles.userMessage : styles.botMessage
                             }`}
                         >
+                            {message.sender === 'bot' && (
+                                <div className={styles.botName}>Quinas</div>
+                            )}
                             {message.html ? (
                                 <div 
                                     className={styles.messageContent}
@@ -277,7 +318,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
             {isOpen && (
                 <div className={styles.chatWindow}>
                     <div className={styles.chatHeader}>
-                        <h3>Internal Assistant</h3>
+                        <h3>Chatbot</h3>
                         <button
                             className={styles.closeButton}
                             onClick={() => setIsOpen(false)}
@@ -295,6 +336,9 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
                                     message.sender === 'user' ? styles.userMessage : styles.botMessage
                                 }`}
                             >
+                                {message.sender === 'bot' && (
+                                    <div className={styles.botName}>Quinas</div>
+                                )}
                                 {message.html ? (
                                     <div 
                                         className={styles.messageContent}
