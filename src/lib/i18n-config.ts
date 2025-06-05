@@ -80,6 +80,7 @@ const enTranslations = {
     expiringSoon: 'Expiring Soon',
   },
   navigation: {
+    dashboard: 'Dashboard',
     clients: 'Clients',
     documents: 'Documents',
     transports: 'Transports',
@@ -314,6 +315,7 @@ const ptTranslations = {
     expiringSoon: 'Expira em Breve',
   },
   navigation: {
+    dashboard: 'Painel de Controlo',
     clients: 'Clientes',
     documents: 'Documentos',
     transports: 'Transportes',
@@ -548,6 +550,7 @@ const itTranslations = {
     expiringSoon: 'In Scadenza',
   },
   navigation: {
+    dashboard: 'Dashboard',
     clients: 'Clienti',
     documents: 'Documenti',
     transports: 'Trasporti',

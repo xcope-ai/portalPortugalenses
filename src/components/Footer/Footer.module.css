@@ -1,6 +1,6 @@
 .footer {
-  height: var(--footer-height);
-  background-color: var(--primary-color);
+  height: 70px;
+  background-color: #2c272f;;
   color: white;
   display: flex;
   align-items: center;

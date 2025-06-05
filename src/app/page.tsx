@@ -21,7 +21,7 @@ export default function HomePage() {
       if (lastVisitedPage && lastVisitedPage !== '/') {
         router.push(lastVisitedPage);
       } else {
-        router.push('/clients');
+        router.push('/dashboard');
       }
     }
   }, [isAuthenticated, router]);
