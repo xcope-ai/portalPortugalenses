@@ -201,6 +201,10 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
         }
     };
 
+    const toggleChatWindow = () => {
+        setIsOpen(prev => !prev);
+    };
+
     if (fullScreen) {
         return (
             <div className={styles.fullScreenContainer}>
@@ -267,7 +271,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
             {!isOpen && (
                 <button
                     className={styles.chatButton}
-                    onClick={() => setIsOpen(true)}
+                    onClick={toggleChatWindow}
                     aria-label="Open chat"
                 >
                     <span>💬</span>
@@ -277,10 +281,10 @@ export const Chatbot: React.FC<ChatbotProps> = ({ fullScreen = false }) => {
             {isOpen && (
                 <div className={styles.chatWindow}>
                     <div className={styles.chatHeader}>
-                        <h3>Internal Assistant</h3>
+                        <h3 className={styles.chatTitle}>QUINAS</h3>
                         <button
                             className={styles.closeButton}
-                            onClick={() => setIsOpen(false)}
+                            onClick={toggleChatWindow}
                             aria-label="Close chat"
                         >
                             ×

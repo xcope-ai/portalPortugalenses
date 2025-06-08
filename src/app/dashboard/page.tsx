@@ -1,9 +1,10 @@
 import DefaultLayout from '@/layouts/DefaultLayout';
 import React from 'react';
-import styles from './dashboard.module.css'; // Vamos criar este ficheiro CSS a seguir
-import { MdPeople, MdDescription, MdAttachMoney, MdWarning } from 'react-icons/md'; // Exemplo de icons
+import styles from './dashboard.module.css';
+import { MdPeople, MdDescription, MdAttachMoney, MdWarning, MdError } from 'react-icons/md';
+import { FaFileInvoice } from 'react-icons/fa';
 
-// Componente placeholder para um cartão de estatística (inspirado na imagem)
+// Componente placeholder para um cartão de estatística
 interface StatsCardProps {
   title: string;
   value: string | number;
@@ -43,7 +44,7 @@ const DashboardPage = () => {
   // Aqui, no futuro, você obteria os dados reais para o dashboard
   const totalClients = 127; // Exemplo
   const activePolicies = 215; // Exemplo
-  const pendingRenewals = 14; // Exemplo
+  const overdueInvoices = 7; // Número realista para faturas vencidas
   const monthlyRevenue = 12450.50; // Exemplo
 
   return (
@@ -61,17 +62,17 @@ const DashboardPage = () => {
             changeType="increase"
           />
           <StatsCard
-            title="Apólices Ativas" // Ou outro título relevante para o seu negócio
+            title="Apólices Ativas"
             value={activePolicies}
             icon={<MdDescription size={24} />}
             percentageChange="5%"
             changeType="increase"
           />
            <StatsCard
-            title="Renovações Pendentes" // Ou outro título relevante para o seu negócio
-            value={pendingRenewals}
-            icon={<MdWarning size={24} />}
-            percentageChange="3%"
+            title="Faturas Vencidas"
+            value={overdueInvoices}
+            icon={<FaFileInvoice size={24} />}
+            percentageChange="15%"
             changeType="decrease"
           />
           <StatsCard
@@ -87,28 +88,24 @@ const DashboardPage = () => {
         {/* Secção para Últimos Documentos/Faturas */}
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Últimos Documentos/Faturas</h2>
-          {/* Aqui você listaria os documentos/faturas recentes */}
           <div className={styles.placeholderCard}>Lista de últimos documentos/faturas</div>
         </div>
 
         {/* Secção para Faturas Vencidas ou Próximas do Vencimento */}
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Faturas Vencidas ou Próximas do Vencimento</h2>
-          {/* Aqui você listaria as faturas com problemas de vencimento */}
            <div className={styles.placeholderCard}>Lista de faturas vencidas ou próximas do vencimento</div>
         </div>
 
         {/* Secção para Resumo de Serviços */}
          <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Resumo de Serviços</h2>
-          {/* Aqui você mostraria métricas sobre serviços */}
            <div className={styles.placeholderCard}>Gráficos ou tabelas de resumo de serviços</div>
         </div>
 
          {/* Secção para Faturação e Perdas */}
          <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Faturação e Perdas</h2>
-          {/* Aqui você mostraria gráficos ou resumos financeiros */}
            <div className={styles.placeholderCard}>Gráficos ou tabelas de faturação e perdas</div>
         </div>
 

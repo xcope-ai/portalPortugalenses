@@ -1,11 +1,13 @@
 :root {
-  --primary-color: rgb(13, 23, 79);
+  --primary-color: #0d47a1;
+  --primary-color-dark: #0d47a1;
   --secondary-color: rgb(74, 85, 104);
   --background-color: #f5f7fa;
   --text-color: #333333;
   --light-text-color: #718096;
   --border-color: #e2e8f0;
   --error-color: #e53e3e;
+  --success-color: #38a169;
   
   --header-height: 60px;
   --footer-height: 50px;

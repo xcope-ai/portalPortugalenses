@@ -31,8 +31,8 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
       {isAuthenticated && <Sidebar />}
       <main className={`${styles.main} ${isAuthenticated ? styles.withSidebar : ''}`}>
         {children}
+        <Footer />
       </main>
-      <Footer />
     </div>
   );
 };

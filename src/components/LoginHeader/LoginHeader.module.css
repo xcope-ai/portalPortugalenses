@@ -15,10 +15,10 @@
 }
 
 .logo {
+  padding: 10px 0;
   height: var(--header-height);
   display: flex;
   align-items: center;
-  padding: 10px 0;
 }
 
 .logo img {

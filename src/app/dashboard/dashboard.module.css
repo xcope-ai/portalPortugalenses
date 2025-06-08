@@ -4,10 +4,12 @@
 }
 
 .pageTitle {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: var(--text-color); /* Assumindo que você tem variáveis CSS para cores */
+  color: var(--primary-color); /* Alterado para o azul principal */
+  border-bottom: 2px solid rgba(13, 23, 79, 0.1); /* Ajustado para 2px e cor específica */
+  padding-bottom: 10px; /* Espaçamento entre o título e a linha */
 }
 
 .statsCardsGrid {
@@ -46,14 +48,15 @@
 
 .title {
   font-size: 16px;
-  color: var(--text-color-light); /* Cor mais clara para o título */
+  color: var(--primary-color); /* Alterado para o azul principal */
   margin-bottom: 4px;
+  font-weight: bold; /* Adicionado: Para os títulos dos cartões de estatísticas */
 }
 
 .value {
   font-size: 24px;
   font-weight: bold;
-  color: var(--text-color);
+  color: var(--primary-color); /* Alterado para o azul principal */
 }
 
 .percentageChange {
@@ -82,7 +85,7 @@
 .sectionTitle {
   font-size: 20px;
   font-weight: bold;
-  color: var(--text-color);
+  color: var(--primary-color); /* Alterado para o azul principal */
   margin-bottom: 15px;
   border-bottom: 1px solid var(--border-color); /* Linha separadora */
   padding-bottom: 10px;
@@ -94,8 +97,19 @@
   border-radius: 8px;
   padding: 20px;
   text-align: center;
-  color: var(--text-color-light);
+  color: var(--primary-color); /* Alterado para o azul principal */
   font-style: italic;
 }
 
 /* Adicionar media queries para responsividade se necessário */
+
+/* Para garantir a consistência da fonte, embora já deva herdar do global */
+/* Poderá adicionar isto se notar que a fonte não é a mesma */
+/*
+.dashboardContainer,
+.statsCard,
+.section {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+*/
