@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useI18n } from '@/lib/i18n';
 import LoginForm from '@/components/LoginForm/LoginForm';
@@ -13,7 +13,7 @@ export default function HomePage() {
     <div className={styles.loginPage}>
       <div className={styles.backgroundContainer}>
         <Image
-          src="/logo.png"
+          src="/login_logo.png"
           alt="Background Logo"
           className={styles.backgroundImage}
           width={800}
