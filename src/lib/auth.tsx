@@ -48,13 +48,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         localStorage.setItem('isAuthenticated', 'true');
         // Set the cookie for middleware
         document.cookie = 'isAuthenticated=true; path=/';
-        // Redirect to last visited page if it exists, otherwise default to /clients
-        const storedLastPage = localStorage.getItem('lastVisitedPage');
-        if (storedLastPage && storedLastPage !== '/') {
-          router.push(storedLastPage);
-        } else {
-          router.push('/clients');
-        }
+        // Redirecionar SEMPRE para o dashboard após o login bem-sucedido
+        router.push('/dashboard');
         resolve(true);
       }, 1000);
     });

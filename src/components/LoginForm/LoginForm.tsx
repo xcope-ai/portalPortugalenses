@@ -79,7 +79,7 @@ const LoginForm = memo(() => {
   }, [formData, login, t, validateForm]);
   
   return (
-    <div className={styles.loginContainer}>
+    <div className={styles.formWrapper}>
       <div className={styles.loginCard}>
         <h2 className={styles.loginTitle}>{t('forms.portalTitle')}</h2>
         

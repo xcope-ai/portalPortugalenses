@@ -1,0 +1,115 @@
+.dashboardContainer {
+  padding: 20px;
+  /* Adicione estilos gerais para o container do dashboard */
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--primary-color); /* Alterado para o azul principal */
+  border-bottom: 2px solid rgba(13, 23, 79, 0.1); /* Ajustado para 2px e cor específica */
+  padding-bottom: 10px; /* Espaçamento entre o título e a linha */
+}
+
+.statsCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Layout responsivo com cartões */
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.statsCard {
+  background-color: var(--card-bg); /* Fundo do cartão, similar ao que vi em outros ficheiros */
+  border-radius: 10px;
+  box-shadow: var(--card-shadow); /* Sombra, similar ao que vi em outros ficheiros */
+  backdrop-filter: var(--card-blur); /* Efeito de blur, similar ao que vi em outros ficheiros */
+  border: var(--card-border); /* Borda, similar ao que vi em outros ficheiros */
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.iconContainer {
+  background-color: var(--primary-color); /* Cor de fundo para o ícone */
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 16px;
+  color: var(--primary-color); /* Alterado para o azul principal */
+  margin-bottom: 4px;
+  font-weight: bold; /* Adicionado: Para os títulos dos cartões de estatísticas */
+}
+
+.value {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color); /* Alterado para o azul principal */
+}
+
+.percentageChange {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.increase {
+  color: var(--success-color); /* Cor verde para aumento */
+}
+
+.decrease {
+  color: var(--error-color); /* Cor vermelha para diminuição */
+}
+
+.section {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: var(--card-blur);
+  border: var(--card-border);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-color); /* Alterado para o azul principal */
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color); /* Linha separadora */
+  padding-bottom: 10px;
+}
+
+.placeholderCard {
+  /* Estilo básico para os placeholders das secções */
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: var(--primary-color); /* Alterado para o azul principal */
+  font-style: italic;
+}
+
+/* Adicionar media queries para responsividade se necessário */
+
+/* Para garantir a consistência da fonte, embora já deva herdar do global */
+/* Poderá adicionar isto se notar que a fonte não é a mesma */
+/*
+.dashboardContainer,
+.statsCard,
+.section {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+*/

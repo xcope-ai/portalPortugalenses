@@ -11,10 +11,10 @@ const LoginHeader = () => {
     <header className={styles.header}>
       <div className={styles.logo}>
         <Image
-          src="/big_logo.png"
+          src="/logo21.png"
           alt="Logo"
-          width={200}
-          height={60}
+          width={50}
+          height={45}
           priority
         />
       </div>

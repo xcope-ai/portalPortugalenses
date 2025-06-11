@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from 'react';
 import Header from '@/components/Header/Header';
 import Sidebar from '@/components/Sidebar/Sidebar';
@@ -29,8 +31,8 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
       {isAuthenticated && <Sidebar />}
       <main className={`${styles.main} ${isAuthenticated ? styles.withSidebar : ''}`}>
         {children}
+        <Footer />
       </main>
-      <Footer />
     </div>
   );
 };

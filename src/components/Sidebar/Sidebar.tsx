@@ -1,9 +1,11 @@
+"use client";
+
 import { useI18n } from '@/lib/i18n';
 import { useAuth } from '@/lib/auth';
 import Link from 'next/link';
 import styles from './Sidebar.module.css';
 import { usePathname } from 'next/navigation';
-import { FaUsers, FaFileAlt, FaTruck, FaBox, FaHeadset, FaAward, FaCog, FaComments } from 'react-icons/fa';
+import { FaUsers, FaFileAlt, FaTruck, FaBox, FaHeadset, FaAward, FaCog, FaComments, FaTachometerAlt } from 'react-icons/fa';
 
 const Sidebar = () => {
   const { t } = useI18n();
@@ -15,6 +17,7 @@ const Sidebar = () => {
   }
 
   const navigationItems = [
+    { id: 'dashboard', label: t('navigation.dashboard'), path: '/dashboard', icon: <FaTachometerAlt /> },
     { id: 'clients', label: t('navigation.clients'), path: '/clients', icon: <FaUsers /> },
     { id: 'documents', label: t('navigation.documents'), path: '/documents', icon: <FaFileAlt /> },
     { id: 'transports', label: t('navigation.transports'), path: '/transports', icon: <FaTruck /> },
@@ -26,6 +29,9 @@ const Sidebar = () => {
   ];
 
   const isActive = (path: string) => {
+    if (path === '/dashboard') {
+        return pathname === '/dashboard' || pathname === '/';
+    }
     return pathname === path || pathname?.startsWith(`${path}/`);
   };
 
