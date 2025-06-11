@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  distDir: 'out',
+  reactStrictMode: true,
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
-};
+  basePath: process.env.NODE_ENV === 'production' ? '/plataforma' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/plataforma/' : '',
+}
 
 module.exports = nextConfig;
