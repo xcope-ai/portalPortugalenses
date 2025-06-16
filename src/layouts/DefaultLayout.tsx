@@ -19,7 +19,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     <div className={styles.layout}>
       <div className={styles.backgroundContainer}>
         <Image
-          src="/logo.png"
+          src="/logo_fundo.png"
           alt="Background Logo"
           className={styles.backgroundImage}
           width={800}

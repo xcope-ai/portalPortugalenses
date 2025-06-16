@@ -10,21 +10,19 @@ export default function HomePage() {
   const { t } = useI18n();
 
   return (
-    <div className={styles.loginPage}>
-      <div className={styles.backgroundContainer}>
-        <Image
-          src="/login_logo.png"
-          alt="Background Logo"
-          className={styles.backgroundImage}
-          width={800}
-          height={800}
-          priority
-        />
+    <>
+      <div className="loginBackground"></div>
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div className={styles.loginPage}>
+          <div className={styles.backgroundContainer}>
+            <div className={styles.backgroundImage}></div>
+          </div>
+          <LoginHeader />
+          <div className={styles.loginContainer}>
+            <LoginForm />
+          </div>
+        </div>
       </div>
-      <LoginHeader />
-      <div className={styles.loginContainer}>
-        <LoginForm />
-      </div>
-    </div>
+    </>
   );
 }

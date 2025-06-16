@@ -64,12 +64,20 @@
   margin-top: 4px;
 }
 
-.increase {
-  color: var(--success-color); /* Cor verde para aumento */
+.percentageIncrease {
+  color: #28a745; /* Verde para aumento */
+  font-weight: normal; /* Alterado para normal */
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.decrease {
-  color: var(--error-color); /* Cor vermelha para diminuição */
+.percentageDecrease {
+  color: #dc3545; /* Vermelho para diminuição */
+  font-weight: normal; /* Alterado para normal */
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .section {

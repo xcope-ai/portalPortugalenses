@@ -73,3 +73,17 @@ button {
     margin-left: 0;
   }
 }
+
+.loginBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: url('/fundo_login.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.10;      /* suave */
+  filter: blur(2px);  /* igual ao resto do site */
+}

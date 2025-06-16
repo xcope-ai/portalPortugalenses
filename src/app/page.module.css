@@ -23,11 +23,17 @@
 }
 
 .backgroundImage {
-  height: auto;
-  width: 800px;
-  opacity: 0.1;
-  object-fit: contain;
-  transform: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: url('/fundo_login.png') no-repeat center center;
+  background-size: cover;   /* Preenche todo o ecrã */
+  opacity: 0.10;
+  filter: blur(2px);
 }
 
 .loginContainer {
